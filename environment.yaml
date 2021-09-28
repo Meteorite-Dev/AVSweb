@@ -1,0 +1,45 @@
+name: ame
+channels:
+  - conda-forge
+  - anaconda
+  - defaults
+dependencies:
+  - autopep8=1.5.7=pyhd3eb1b0_0
+  - blas=1.0=mkl
+  - ca-certificates=2020.10.14=0
+  - certifi=2021.5.30=py39haa95532_0
+  - click=8.0.1=pyhd3eb1b0_0
+  - colorama=0.4.4=py_0
+  - dataclasses=0.8=pyh6d0b6a4_7
+  - flask=1.1.2=pyhd3eb1b0_0
+  - flask-login=0.5.0=py_0
+  - flask-sqlalchemy=2.5.1=pyhd8ed1ab_0
+  - greenlet=1.1.1=py39h415ef7b_0
+  - importlib-metadata=4.8.1=py39haa95532_0
+  - intel-openmp=2021.3.0=haa95532_3372
+  - itsdangerous=2.0.1=pyhd3eb1b0_0
+  - jinja2=3.0.1=pyhd3eb1b0_0
+  - markupsafe=2.0.1=py39h2bbff1b_0
+  - mkl=2021.3.0=haa95532_524
+  - mkl-service=2.4.0=py39h2bbff1b_0
+  - mkl_fft=1.3.0=py39h277e83a_2
+  - mkl_random=1.2.2=py39hf11a4ad_0
+  - numpy=1.20.3=py39ha4e8547_0
+  - numpy-base=1.20.3=py39hc2deb75_0
+  - openssl=1.1.1l=h2bbff1b_0
+  - pip=21.2.4=py38haa95532_0
+  - pycodestyle=2.7.0=pyhd3eb1b0_0
+  - python=3.9.7=h6244533_1
+  - python_abi=3.9=2_cp39
+  - setuptools=58.0.4=py39haa95532_0
+  - six=1.16.0=pyhd3eb1b0_0
+  - sqlalchemy=1.4.25=py39hb82d6ee_0
+  - sqlite=3.36.0=h2bbff1b_0
+  - toml=0.10.2=pyhd3eb1b0_0
+  - tzdata=2021a=h5d7bf9c_0
+  - vc=14.2=h21ff451_1
+  - vs2015_runtime=14.27.29016=h5e58377_2
+  - werkzeug=2.0.1=pyhd3eb1b0_0
+  - wheel=0.37.0=pyhd3eb1b0_1
+  - wincertstore=0.2=py39h2bbff1b_0
+  - zipp=3.5.0=pyhd3eb1b0_0
