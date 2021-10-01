@@ -1,7 +1,15 @@
-from flask import Flask
+import auth
+from flask import Flask, Blueprint
 from flask import render_template
+from auth.auth import auth
 
 app = Flask(__name__)
+
+app.config.from_pyfile('config.py')
+
+app.secret_key = app.config['SECRET_KEY']
+
+app.register_blueprint(auth)
 
 
 @app.route("/")
@@ -10,5 +18,4 @@ def hello_world():
 
 
 if __name__ == "__main__":
-    app.debug = True
     app.run()
