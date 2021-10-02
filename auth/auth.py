@@ -1,8 +1,6 @@
-from operator import mod
 from flask import request, render_template, url_for, redirect, flash
 from flask import Blueprint
 from flask import render_template
-from flask.templating import render_template_string
 
 from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
 
