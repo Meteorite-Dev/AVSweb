@@ -1,12 +1,17 @@
+import os
+from flask import send_from_directory
 import auth
-from flask import Flask, Blueprint
+from flask import Flask
 from flask import render_template
-from auth.auth import auth
-from Webcv.Webcv import webcv, motion, vs
+from flask_jsglue import JSGlue
 
+from auth.auth import auth
+from Webcv.Webcv import webcv
 import threading
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder="src/templates")
+
+jsglue = JSGlue(app)
 
 app.config.from_pyfile('config.py')
 
@@ -17,14 +22,20 @@ app.register_blueprint(webcv)
 
 
 @app.route("/")
-def hello_world():
+def home():
     return render_template('welcome.html')
 
 
-if __name__ == "__main__":
-    t = threading.Thread(target=motion)
-    t.daemon = True
-    t. start()
-    app.run()
+@app.route("/test")
+def test():
+    return render_template('test.html')
 
-vs.stop()
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='images/icon.ico')
+
+
+if __name__ == "__main__":
+
+    app.run()

@@ -1,5 +1,5 @@
 DEBUG = True
-SQLALCHEMY_ECHO = True
+SQLALCHEMY_ECHO = False
 SQLALCHEMY_DATABASE_URI = "sqlite:///auth/auth.sqlite"
 SQLALCHEMY_TRACK_MODIFICATIONS = True
 SECRET_KEY = "d89abafebaf5a2cedbbeb0935fbe75dc"

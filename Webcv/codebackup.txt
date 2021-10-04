@@ -1,0 +1,73 @@
+# def motion():
+#     global vs, outputFrame, lock
+
+#     if vs is None:
+#         print("vs is none")
+#     while True:
+
+#         frame = vs.read()
+#         frame = imutils.resize(frame, width=400)
+
+#         with lock:
+#             outputFrame = frame.copy()
+
+
+# def generate():
+#     global outputFrame, lock
+
+#     # loop over frames from the output stream
+#     while True:
+#         # wait until the lock is acquired
+#         with lock:
+#             if outputFrame is None:
+#                 print("output is none")
+#                 continue
+
+#             # encode Frame to JPEG
+#             (flag, encodedImage) = cv2.imencode(".jpg", outputFrame)
+
+#             if not flag:
+#                 print("no flag")
+#                 continue
+
+#         yield(b'--frame\r\n' b'Content-Type: image/jpeg\r\n\r\n' +
+#               bytearray(encodedImage) + b'\r\n')
+
+
+  <!-- <script>
+      window.onunload = function(){
+        $.ajax({
+        url: "{{ url_for('Webcv.video_stop')}}" ,
+        type: 'GET',
+        success: function () {
+            console.log("stop success.");
+        },
+        error: function () {
+             console.log("error");
+        }
+      });
+      }
+      window.onbeforeunload = function() {return '您確定要離開嗎?';};
+  </script> -->
+
+      # global p
+    # p = multiprocessing.Process(target=gen_can_frames, args=(pageargs,))
+    # p.daemon = True
+    # p.start()
+    # p.join()
+
+
+# Process
+    # global p, proc
+
+    # proc = []
+    # for pro in range(1, pageargs+1):
+    #     print("proc : ", pro)
+    #     p = multiprocessing.Process(target=gen_can_frames, args=(pro,))
+    #     p.daemon = True
+    #     p.start()
+    #     proc.append(p)
+
+    # for pro in proc:
+
+    #     pro.join()
