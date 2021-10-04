@@ -88,4 +88,5 @@ dependencies:
   - zipp=3.5.0=pyhd3eb1b0_0
   - zlib=1.2.11=h8ffe710_1012
   - zstd=1.5.0=h6255e5f_0
-prefix: C:\Users\MingChe\.conda\envs\ame
+  - pip:
+    - flask-jsglue==0.3.1
