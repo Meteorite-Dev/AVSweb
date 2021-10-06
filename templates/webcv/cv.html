@@ -1,0 +1,41 @@
+{% extends "temp/base.html" %}
+{% block title %} Dashboard {% endblock title %}
+{% block navname %}
+<img src="{{ url_for('static' ,filename='/images/FBK.jpg') }}" alt="" width="30" height="24"
+  class="d-inline-block align-text-top">cvDash
+{% endblock navname%}
+{% block navbar %}
+<a class="navbar-brand" href="#"></a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+  aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="#">Home</a>
+    </li>
+    <!-- can add some links -->
+    <li class="nav-item">
+      <a class="nav-link" href="{{ url_for('Webcv.vid') }}">WebCV</a>
+    </li>
+  </ul>
+  <span class="d-flex">
+    <div class="dropdown">
+      <button class="btn btn-light dropdown-toggle" type="button" id="UserAuth" data-bs-toggle="dropdown"
+        aria-expanded="false">
+        Usinfo
+      </button>
+      <ul class="dropdown-menu dropdown-menu-end dropdown-menu-light" aria-labelledby="UserAuth">
+        <li><a class="dropdown-item active" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+        <li>
+          <hr class="dropdown-divider">
+        </li>
+        <li><a class="dropdown-item" href="#">Log Out</a></li>
+      </ul>
+    </div>
+  </span>
+</div>
+{%endblock navbar%}

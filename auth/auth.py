@@ -7,7 +7,7 @@ from flask_login import LoginManager, UserMixin, login_user, logout_user, login_
 from . import models
 
 
-auth = Blueprint('auth', __name__, template_folder='../src/templates/auth')
+auth = Blueprint('auth', __name__, template_folder='../templates/auth/')
 
 login_manager = LoginManager()
 

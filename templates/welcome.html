@@ -1,0 +1,38 @@
+{% extends "temp/base.html" %}
+{% block title %} welcome {% endblock title %}
+{% block navname %}<img src="static/images/FBK.jpg" alt="" width="30" height="24" class="d-inline-block align-text-top">AVS{% endblock navname%}
+
+{% block navbar %}
+    <a class="navbar-brand" href="#"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <!-- can add some links -->
+            <li class="nav-item">
+                <a class="nav-link" href="#">Someting</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    WebCV
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <!-- yet to connect to auth -->
+                    <li><a class="dropdown-item" href="{{ url_for('Webcv.dash') }}">DashBoard</a></li>
+                    <li><a class="dropdown-item" href="{{ url_for('Webcv.vid') }}">WebCV</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+            </li>
+            
+        </ul>
+        <span class="d-flex">
+            <!-- auth not yet -->
+            <a type="button" class="btn btn-outline-secondary" href="{{ url_for('auth.login') }}">Login</a>
+        </span>
+    </div>
+{%endblock navbar%}

@@ -9,7 +9,7 @@ from auth.auth import auth
 from Webcv.Webcv import webcv
 import threading
 
-app = Flask(__name__, template_folder="src/templates")
+app = Flask(__name__, template_folder="templates/",static_folder="static/")
 
 jsglue = JSGlue(app)
 
@@ -31,7 +31,7 @@ def test():
     return render_template('test.html')
 
 
-@app.route('/favicon.ico')
+@app.route('/static/images/favicon.ico')
 def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='images/icon.ico')
 

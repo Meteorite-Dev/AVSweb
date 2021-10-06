@@ -1,0 +1,90 @@
+{% extends "temp/webcvbase.html"%}
+{% block title %} AVS Surveillance {% endblock title %}
+{% block head%}
+  <style>
+  </style>
+{% endblock head %}
+
+{% block navbar %}
+  <nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <span class="d-flex">
+        <!-- auth not yet -->
+        <div class="dropdown">
+          <button class="btn btn-light dropdown-toggle" type="button" id="UserAuth" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Usinfo
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-light" aria-labelledby="UserAuth">
+            <li><a class="dropdown-item active" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#">Log Out</a></li>
+          </ul>
+        </div>
+      </span>
+    </div>
+  </nav>
+    <div class="collapse collapse-horizontal position-fixed" id="navbarToggleExternalContent">
+    <div class="card card-body" style="width: 250px;">
+      <span class="h5" style="text-align: center; display:block;">
+        <a href="#" class="" style="text-decoration:none;color:black"><strong>WebCV</strong></a>
+      </span>
+      <p></p>
+      <div class="d-grid gap-2">
+        <a href="{{ url_for('home') }}" class="btn btn-light">Home</a>
+        <a href="{{ url_for('Webcv.dash') }}" class="btn btn-light">DashBoard</a>
+      </div>
+    </div>
+  </div>
+{% endblock navbar %}
+{% block body %}
+  <div class="row">
+    <div class="col">
+        <div class="container-fluid">
+          <!-- include image or video here -->
+            <div class="row-6">
+              <!-- up -->
+                          
+            </div>
+            <div class="row-6">
+              <!-- down -->
+                        
+            </div>
+        </div>
+    </div>
+    <div class="col-2 ">
+        here were some info about sys detect
+    </div>
+  </div>
+  <script>
+    var getUrlParameter = function getUrlParameter(sParam) {
+      var sPageURL = window.location.search.substring(1),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+      for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+          return typeof sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+        }
+      }
+      return false;
+    };
+    var camnum = getUrlParameter('num');
+    var ci = 0;
+    for (i = 0; i < camnum; i++) {
+      ci = ci + 1;
+      $('body').append('<img src="' + Flask.url_for('Webcv.video_feed', {"num":ci }) + '">');
+    }
+  </script>
+
+{% endblock body%}

@@ -13,7 +13,7 @@ import concurrent.futures
 import time
 
 webcv = Blueprint('Webcv', __name__,
-                  template_folder='../src/templates/webcv', url_prefix='/cv')
+                  template_folder='../templates/webcv', url_prefix='/cv')
 
 outputFrame = None
 # lock = threading.Lock()
@@ -21,6 +21,8 @@ lock = multiprocessing.Lock()
 vs = None
 
 # blueprint init
+
+
 @webcv.record_once
 def cvinit(state):
     cvapp = state.app
@@ -28,12 +30,16 @@ def cvinit(state):
     video_name = cvapp.config['VIDEO_SOURCE']
 
 # dash board
+
+
 @webcv.route('/dash')
-def cvt():
+def dash():
     return render_template('cv.html')
 
 # main video process reae file form config.py
 # VIDEO_SOURCE flags
+
+
 def gen_can_frames(num):
 
     vs = VideoCapture(video_name)
@@ -68,6 +74,8 @@ def vid():
 
 # create multiprocess
 # using gen_can_frams -> create multi video process
+
+
 def motion():
     with concurrent.futures.ThreadPoolExecutor(max_workers=6) as executor:
         cam_proc = {executor.submit(
