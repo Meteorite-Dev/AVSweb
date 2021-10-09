@@ -21,8 +21,6 @@ lock = multiprocessing.Lock()
 vs = None
 
 # blueprint init
-
-
 @webcv.record_once
 def cvinit(state):
     cvapp = state.app
@@ -38,8 +36,6 @@ def dash():
 
 # main video process reae file form config.py
 # VIDEO_SOURCE flags
-
-
 def gen_can_frames(num):
 
     vs = VideoCapture(video_name)
@@ -74,8 +70,6 @@ def vid():
 
 # create multiprocess
 # using gen_can_frams -> create multi video process
-
-
 def motion():
     with concurrent.futures.ThreadPoolExecutor(max_workers=6) as executor:
         cam_proc = {executor.submit(
