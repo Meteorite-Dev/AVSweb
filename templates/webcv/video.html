@@ -69,10 +69,6 @@
                 <input type="text" class="form-control" id="videonum" aria-describedby="videonum">
               </div>
             </form>
-              <!-- <h5>num : </h5>
-              <div class="col-auto">
-                <input type="text" id="num" class="form-control">
-              </div> -->
           </div>
         </div>
         <div class="modal-footer">
@@ -89,6 +85,9 @@
       <!-- video block -->
         <div class="container-fluid" id="vidcontainer">
           <!-- include image or video here -->
+            <script>
+              vd_feed_by_url()
+            </script>
             <div class="row-6" id="vup">
               <!-- up -->
                           
@@ -104,28 +103,5 @@
         here were some info about sys detect
     </div>
   </div>
-  <script>
-    var getUrlParameter = function getUrlParameter(sParam) {
-      var sPageURL = window.location.search.substring(1),
-        sURLVariables = sPageURL.split('&'),
-        sParameterName,
-        i;
-
-      for (i = 0; i < sURLVariables.length; i++) {
-        sParameterName = sURLVariables[i].split('=');
-
-        if (sParameterName[0] === sParam) {
-          return typeof sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
-        }
-      }
-      return false;
-    };
-    var camnum = getUrlParameter('num');
-    var ci = 0;
-    for (i = 0; i < camnum; i++) {
-      ci = ci + 1;
-      $('body').append('<img src="' + Flask.url_for('Webcv.video_feed', {"num":ci }) + '">');
-    }
-  </script>
 
 {% endblock body%}

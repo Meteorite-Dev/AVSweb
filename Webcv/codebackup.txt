@@ -71,3 +71,17 @@
     # for pro in proc:
 
     #     pro.join()
+
+# fuck
+# create multiprocess
+# using gen_can_frams -> create multi video process
+# def motion():
+#     video_name_dir = video_dir_walk()
+#     print("motion")
+#     with concurrent.futures.ThreadPoolExecutor(max_workers=6) as executor:
+#         cam_proc = {executor.submit(
+#             gen_can_frames, vname): vname for vname in video_name_dir}
+#         try:
+#             res = cam_proc.result()
+#         except Exception as exc:
+#             print("error")
