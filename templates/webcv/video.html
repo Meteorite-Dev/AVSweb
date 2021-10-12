@@ -2,6 +2,16 @@
 {% block title %} AVS Surveillance {% endblock title %}
 {% block head%}
   <script src="{{ url_for('static' , filename='/js/webcv.js')}}"></script>
+  <style>
+    p{
+      margin-top: 15px;
+      margin-bottom: 1px;
+    }
+    div.div-inline-gray{
+      display: inline-block; 
+      background-color:rgb(236, 236, 236)
+    }
+  </style>
 {% endblock head %}
 
 {% block navbar %}
@@ -72,7 +82,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="churl()">Save</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="vdset()">Save</button>
         </div>
       </div>
     </div>
@@ -81,23 +91,13 @@
 
 {% block body %}
   <div class="row">
-    <div class="col">
+    <div class="col mx-auto">
       <!-- video block -->
-        <div class="container-fluid" id="vidcontainer">
-          <!-- include image or video here -->
-            <script>
-              vd_feed_by_url()
-            </script>
-            <div class="row-6" id="vup">
-              <!-- up -->
-                          
-            </div>
-            <div class="row-6" id="vdw">
-              <!-- down -->
-                        
-            </div>
-        </div>
+      <div class="container" id="vidcontainer">
+        
+      </div>
     </div>
+    
     <!-- info block -->
     <div class="col-2 ">
         here were some info about sys detect
