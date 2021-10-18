@@ -7,7 +7,7 @@ from flask_login import LoginManager, UserMixin, login_user, logout_user, login_
 from . import models
 
 
-auth = Blueprint('auth', __name__, template_folder='../templates/auth/')
+auth = Blueprint('auth', __name__, template_folder='../templates/')
 
 login_manager = LoginManager()
 
@@ -25,29 +25,37 @@ login_manager.login_view = 'auth.login'
 login_manager.login_message = 'Accessed diened!!'
 
 
-class User(UserMixin, models.User):
+class Users(models.User):
+    pass
+
+
+class User(UserMixin):
     pass
 
 
 @login_manager.user_loader
-def user_loader(user):
+def user_loader(usid):
     user = User()
-    user.id = request.form.get('user_id')
+    user.id = usid
     return user
 
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'GET':
-        return render_template("login.html")
+        return render_template("auth/login.html")
     user = User()
-    lus = request.form['user_id']
-    cus = models.User().query.filter_by(name=lus).first()
+    user.id = request.form.get('user_id')
+    usid = request.form.get('user_id')
+    cus = Users().query.filter_by(name=user.id).first()
     if cus != None:
-        if request.form['password'] == cus.password:
+        if request.form.get('password') == cus.password:
             print("login")
+            print(user.id)
             login_user(user)
-            return redirect(url_for('auth.dash'))
+            # return render_template("webcv/cv.html")
+            # return redirect(url_for('auth.dash'))
+            return redirect(url_for('auth.rehome'))
         else:
             print("pas error")
             flash("Access denied!!")
@@ -62,29 +70,38 @@ def login():
 @login_required
 def logout():
     logout_user()
-    return 'Logged out successfully!'
+    return render_template('welcome.html')
 
 
 @auth.route('/dashboard')
 @login_required
 def dash():
-    return render_template('dashboard.html')
+    if current_user.is_active:
+        return render_template('auth/dashboard.html', user_id=current_user.id)
 
 
-# @login_manager.request_loader
-# def request_loader(request):
-#     使用者 = request.form.get('user_id')
-#     if 使用者 not in users:
-#         return
+@auth.route('/callback')
+def rehome():
+    if current_user.is_active:
+        print(current_user.id)
+        return render_template('welcome.html', user_id=current_user.id)
 
-#     user = User()
-#     user.id = 使用者
 
-#     # DO NOT ever store passwords in plaintext and always compare password
-#     # hashes using constant-time comparison!
-#     user.is_authenticated = request.form['password'] == users[使用者]['password']
+@login_manager.request_loader
+def request_loader(request):
+    user = request.form.get('user_id')
+    users = Users().query.with_entities(Users.name)
+    if user not in users:
+        return
+    user = User()
+    user.id = request.form.get('user_id')
 
-#     return user
+    cus = users().query.filter_by(name=user.id).first()
+    # DO NOT ever store passwords in plaintext and always compare password
+    # hashes using constant-time comparison!
+    user.is_authenticated = request.form.get('password') == cus
+
+    return user
 
 
 # @ auth.route("/show_records")
@@ -92,3 +109,4 @@ def dash():
 # def show_records():
 #     python_records = web_select_overall()
 #     return render_template("show_records.html", html_records=python_records)
+！

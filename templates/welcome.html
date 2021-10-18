@@ -32,7 +32,25 @@
         </ul>
         <span class="d-flex">
             <!-- auth not yet -->
-            <a type="button" class="btn btn-outline-secondary" href="{{ url_for('auth.login') }}">Login</a>
+            {% if current_user.is_authenticated %}
+                <div class="dropdown">
+                    <button class="btn btn-light dropdown-toggle" type="button" id="UserAuth" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        {{ user_id }}
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-light" aria-labelledby="UserAuth">
+                        <li><a class="dropdown-item active" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <li>
+                        <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="{{ url_for('auth.logout') }}">Log Out</a></li>
+                    </ul>
+                </div>
+            {% else %}
+                <a type="button" class="btn btn-outline-secondary" href="{{ url_for('auth.login') }}">Login</a>
+            {% endif %}
         </span>
     </div>
 {%endblock navbar%}
