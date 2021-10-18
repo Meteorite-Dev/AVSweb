@@ -109,4 +109,3 @@ def request_loader(request):
 # def show_records():
 #     python_records = web_select_overall()
 #     return render_template("show_records.html", html_records=python_records)
-！
