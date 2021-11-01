@@ -1,4 +1,3 @@
-from re import L
 from flask import request, render_template
 from flask import Blueprint
 from flask import render_template
@@ -29,15 +28,12 @@ def cvinit(state):
     vd_mode = cvapp.config['VIDEO_DIR_MODE']
 
 # dash board
-
-
 @webcv.route('/dash')
 def dash():
     return render_template('cv.html')
 
+
 # video walk
-
-
 def video_dir_walk():
     vfiles = []
     for root, dirs, files in walk(video_dir, topdown=False):
