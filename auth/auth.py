@@ -85,6 +85,7 @@ def rehome():
     if current_user.is_active:
         print(current_user.id)
         return render_template('welcome.html', user_id=current_user.id)
+        # return redirect(url_for('home', user_id=current_user.id))
 
 
 @login_manager.request_loader

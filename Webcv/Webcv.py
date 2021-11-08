@@ -10,6 +10,8 @@ import multiprocessing
 import time
 from os import walk
 
+from flask_login import login_required, current_user
+
 webcv = Blueprint('Webcv', __name__,
                   template_folder='../templates/webcv', url_prefix='/cv')
 
@@ -27,10 +29,12 @@ def cvinit(state):
     video_dir = cvapp.config['VIDEO_SOURCE_DIR']
     vd_mode = cvapp.config['VIDEO_DIR_MODE']
 
+
 # dash board
 @webcv.route('/dash')
+@login_required
 def dash():
-    return render_template('cv.html')
+    return render_template('cv.html', user_id=current_user.id)
 
 
 # video walk
@@ -74,8 +78,9 @@ def gen_can_frames(vname):
 
 # main page of video
 @webcv.route("/video")
+@login_required
 def vid():
-    return render_template("video.html")
+    return render_template("video.html", user_id=current_user.id)
 
 
 @webcv.route("/video_feed")
